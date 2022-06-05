@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 05 Haz 2022, 14:40:50
+-- Üretim Zamanı: 05 Haz 2022, 18:36:41
 -- Sunucu sürümü: 10.1.38-MariaDB
 -- PHP Sürümü: 5.6.40
 
@@ -260,10 +260,34 @@ ALTER TABLE `Rating`
 --
 
 --
+-- Tablo için AUTO_INCREMENT değeri `Actor`
+--
+ALTER TABLE `Actor`
+  MODIFY `ActorID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `Director`
+--
+ALTER TABLE `Director`
+  MODIFY `DirID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `Movie`
 --
 ALTER TABLE `Movie`
   MODIFY `MovieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `Participant`
+--
+ALTER TABLE `Participant`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `Producer`
+--
+ALTER TABLE `Producer`
+  MODIFY `ProID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar
