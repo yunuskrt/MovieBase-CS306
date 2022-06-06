@@ -64,22 +64,114 @@
     <br>
     <br>
 
-    <?php
-    include "movies.php"
-    ?>
 
+    <?php
+    include "config.php";
+    include "movies.php";
+    ?>
+    <br>
+    <br>
+    <br>
+
+    <b>Insert a Movie</b>
     <form action="sendmovie.php" method="POST">
-      <div class="form-group">
-        <input type="text" name="title" placeholder="Type title of movie"><br>
+      <div class="input-group justify-content-center">
+        <div class="form-group">
+          <input type="text" name="title" placeholder="Type title of movie"><br>
+        </div>
+        <div class="form-group">
+          <input type="text" name="date" placeholder="Type release year"><br>
+        </div>
+        <br>
+        <div class="form-group">
+          <input type="text" name="genre" placeholder="Type genre of movie"><br>
+        </div>
+        <div class="form-group">
+          <input type="text" name="director" placeholder="Type director of movie"><br>
+        </div>
+        <div class="form-group">
+          <input type="text" name="producer" placeholder="Type producer of movie"><br>
+        </div>
+        <br>
       </div>
-      <div class="form-group">
-        <input type="text" name="date" placeholder="Type release date"><br>
-      </div>
-      <br>
       <button class="btn btn-outline-dark btn-lg">INSERT</button>
     </form>
+
+    <form action="sendactor.php" method="POST">
+      <br>
+      <br>
+      <br>
+      <b>Insert an Actor</b>
+      <br>
+      <br>
+      <br>
+      <select name="ids">
+
+        <?php
+
+        $sql_command = "SELECT MovieID,Title FROM Movie";
+
+        $myresult = mysqli_query($db, $sql_command);
+
+        while ($id_rows = mysqli_fetch_assoc($myresult)) {
+          $id = $id_rows['MovieID'];
+          $movName = $id_rows['Title'];
+          echo "<option value=$id>" . $id . "-" . $movName . "</option>";
+        }
+        ?>
+
+      </select>
+
+      <br>
+      <br>
+
+      <div class="input-group justify-content-center">
+        <div class="form-group">
+          <input type="text" name="actorname" placeholder="Type name of actor"><br>
+        </div>
+        <div class="form-group">
+          <input type="text" name="actorgender" placeholder="Type gender of actor"><br>
+        </div>
+      </div>
+
+      <button class="btn btn-outline-dark">Add Actor</button>
+    </form>
+
+    <form action="delmovie.php" method="POST">
+      <br>
+      <br>
+      <br>
+      <b>Delete a Movie</b>
+      <br>
+      <br>
+      <br>
+      <select name="idx">
+
+        <?php
+
+        $sql_command = "SELECT MovieID,Title FROM Movie";
+
+        $myresult = mysqli_query($db, $sql_command);
+
+        while ($id_rows = mysqli_fetch_assoc($myresult)) {
+          $id = $id_rows['MovieID'];
+          $movName = $id_rows['Title'];
+          echo "<option value=$id>" . $id . "-" . $movName . "</option>";
+        }
+
+        ?>
+      </select>
+
+      <button class="btn btn-outline-dark">Delete Movie</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <a href="movie.php" class="btn btn-outline-warning"> Go To Movie Page </a>
+    <a href="filtermoviefrontend.php" class="btn btn-outline-success"> Go To Filter Page </a>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
+
 
 </html>

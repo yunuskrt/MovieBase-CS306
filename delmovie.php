@@ -2,15 +2,19 @@
 
 include "config.php";
 
-if (isset($_POST['ids'])){
+if (isset($_POST['idx'])){
 
-$selection_id = $_POST['ids'];
+$selection_id = $_POST['idx'];
 
-$sql_statement = "DELETE FROM Movie WHERE MovieID = $selection_id";
 
-$result = mysqli_query($db, $sql_statement);
+mysqli_query($db, "DELETE FROM Acted_In WHERE MovieID = $selection_id");
+mysqli_query($db, "DELETE FROM Directed WHERE MovieID = $selection_id");
+mysqli_query($db, "DELETE FROM Genre_Of WHERE MovieID = $selection_id");
+mysqli_query($db, "DELETE FROM Produced WHERE MovieID = $selection_id");
+mysqli_query($db, "DELETE FROM Movie WHERE MovieID = $selection_id");
 
-header ("Location: deletemovie.php");
+
+header ("Location: index.php");
 
 }
 
