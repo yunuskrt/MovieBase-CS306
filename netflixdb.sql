@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 06, 2022 at 04:08 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.29
+-- Anamakine: localhost
+-- Üretim Zamanı: 18 Haz 2022, 02:39:24
+-- Sunucu sürümü: 10.1.38-MariaDB
+-- PHP Sürümü: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `netflixdb`
+-- Veritabanı: `netflixdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Acted_In`
+-- Tablo için tablo yapısı `Acted_In`
 --
 
 CREATE TABLE `Acted_In` (
@@ -33,7 +34,7 @@ CREATE TABLE `Acted_In` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Acted_In`
+-- Tablo döküm verisi `Acted_In`
 --
 
 INSERT INTO `Acted_In` (`MovieID`, `ActorID`) VALUES
@@ -41,6 +42,7 @@ INSERT INTO `Acted_In` (`MovieID`, `ActorID`) VALUES
 (2, 55002),
 (3, 55003),
 (5, 55004),
+(5, 55045),
 (7, 55041),
 (8, 55005),
 (9, 55038),
@@ -50,7 +52,7 @@ INSERT INTO `Acted_In` (`MovieID`, `ActorID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Actor`
+-- Tablo için tablo yapısı `Actor`
 --
 
 CREATE TABLE `Actor` (
@@ -60,7 +62,7 @@ CREATE TABLE `Actor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Actor`
+-- Tablo döküm verisi `Actor`
 --
 
 INSERT INTO `Actor` (`ActorName`, `Gender`, `ActorID`) VALUES
@@ -72,12 +74,13 @@ INSERT INTO `Actor` (`ActorName`, `Gender`, `ActorID`) VALUES
 ('Tom Hanks', 'Male', 55034),
 ('Miles Teller', 'Male', 55038),
 ('Zendaya', 'Female', 55041),
-('Jennifer Lawrance', 'Female', 55043);
+('Jennifer Lawrance', 'Female', 55043),
+('Hugh Jackman', 'Male', 55045);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Directed`
+-- Tablo için tablo yapısı `Directed`
 --
 
 CREATE TABLE `Directed` (
@@ -86,7 +89,7 @@ CREATE TABLE `Directed` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Directed`
+-- Tablo döküm verisi `Directed`
 --
 
 INSERT INTO `Directed` (`MovieID`, `DirID`) VALUES
@@ -98,12 +101,13 @@ INSERT INTO `Directed` (`MovieID`, `DirID`) VALUES
 (8, 85001),
 (9, 82329),
 (11, 83456),
-(12, 84007);
+(12, 84007),
+(13, 85002);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Director`
+-- Tablo için tablo yapısı `Director`
 --
 
 CREATE TABLE `Director` (
@@ -112,7 +116,7 @@ CREATE TABLE `Director` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Director`
+-- Tablo döküm verisi `Director`
 --
 
 INSERT INTO `Director` (`DirectorName`, `DirID`) VALUES
@@ -122,12 +126,14 @@ INSERT INTO `Director` (`DirectorName`, `DirID`) VALUES
 ('Gary Ross', 83456),
 ('Denis Villeneuve', 83565),
 ('Frank Darabont', 84007),
-('Andrew Niccol', 85001);
+('Andrew Niccol', 85001),
+('Cem Yilmaz', 85002),
+('', 85003);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Genre`
+-- Tablo için tablo yapısı `Genre`
 --
 
 CREATE TABLE `Genre` (
@@ -135,10 +141,11 @@ CREATE TABLE `Genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Genre`
+-- Tablo döküm verisi `Genre`
 --
 
 INSERT INTO `Genre` (`Name`) VALUES
+(''),
 ('Adventure'),
 ('Comedy'),
 ('Comedy Drama'),
@@ -155,7 +162,7 @@ INSERT INTO `Genre` (`Name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Genre_Of`
+-- Tablo için tablo yapısı `Genre_Of`
 --
 
 CREATE TABLE `Genre_Of` (
@@ -164,11 +171,12 @@ CREATE TABLE `Genre_Of` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Genre_Of`
+-- Tablo döküm verisi `Genre_Of`
 --
 
 INSERT INTO `Genre_Of` (`Name`, `MovieID`) VALUES
 ('Adventure', 1),
+('Comedy', 13),
 ('Drama', 9),
 ('Drama', 12),
 ('Melodrama', 3),
@@ -184,7 +192,7 @@ INSERT INTO `Genre_Of` (`Name`, `MovieID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Movie`
+-- Tablo için tablo yapısı `Movie`
 --
 
 CREATE TABLE `Movie` (
@@ -194,7 +202,7 @@ CREATE TABLE `Movie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Movie`
+-- Tablo döküm verisi `Movie`
 --
 
 INSERT INTO `Movie` (`MovieID`, `ReleaseDate`, `Title`) VALUES
@@ -207,12 +215,13 @@ INSERT INTO `Movie` (`MovieID`, `ReleaseDate`, `Title`) VALUES
 (8, 2011, 'In Time'),
 (9, 2014, 'Whiplash'),
 (11, 2012, 'The Hunger Games'),
-(12, 1999, 'The Green Mile');
+(12, 1999, 'The Green Mile'),
+(13, 2004, 'GORA');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Participant`
+-- Tablo için tablo yapısı `Participant`
 --
 
 CREATE TABLE `Participant` (
@@ -222,21 +231,22 @@ CREATE TABLE `Participant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Participant`
+-- Tablo döküm verisi `Participant`
 --
 
 INSERT INTO `Participant` (`DateOfBirth`, `Username`, `UserID`) VALUES
+('2000-08-22', 'yunuskrt', 12345),
 ('1998-12-14', 'fkaanyalcin', 25003),
 ('2000-05-31', 'valeriacasagrande', 26237),
 ('2000-03-26', 'edakarabudak', 26590),
 ('1999-09-07', 'ahsenihamza', 26636),
 ('2000-06-22', 'asumanasli', 26819),
-('2001-03-03', 'yunustankerestecioglu', 28168);
+('2000-08-22', 'yunustankerestecioglu', 28168);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Produced`
+-- Tablo için tablo yapısı `Produced`
 --
 
 CREATE TABLE `Produced` (
@@ -245,7 +255,7 @@ CREATE TABLE `Produced` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Produced`
+-- Tablo döküm verisi `Produced`
 --
 
 INSERT INTO `Produced` (`MovieID`, `ProID`) VALUES
@@ -258,12 +268,13 @@ INSERT INTO `Produced` (`MovieID`, `ProID`) VALUES
 (8, 12002),
 (9, 16754),
 (11, 11093),
-(12, 12345);
+(12, 12345),
+(13, 17778);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Producer`
+-- Tablo için tablo yapısı `Producer`
 --
 
 CREATE TABLE `Producer` (
@@ -272,7 +283,7 @@ CREATE TABLE `Producer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Producer`
+-- Tablo döküm verisi `Producer`
 --
 
 INSERT INTO `Producer` (`ProducerName`, `ProID`) VALUES
@@ -285,12 +296,14 @@ INSERT INTO `Producer` (`ProducerName`, `ProID`) VALUES
 ('Fred Berger', 15039),
 ('Denis Villeneuve', 16666),
 ('Jason Blum', 16754),
-('Lorne Michaels', 17777);
+('Lorne Michaels', 17777),
+('CMYLMZ', 17778),
+('', 17779);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Rate`
+-- Tablo için tablo yapısı `Rate`
 --
 
 CREATE TABLE `Rate` (
@@ -301,7 +314,7 @@ CREATE TABLE `Rate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Rate`
+-- Tablo döküm verisi `Rate`
 --
 
 INSERT INTO `Rate` (`UserID`, `NumericRating`, `MovieID`, `RateDate`) VALUES
@@ -313,13 +326,14 @@ INSERT INTO `Rate` (`UserID`, `NumericRating`, `MovieID`, `RateDate`) VALUES
 (26636, 4.7, 5, '2006-04-04'),
 (26819, 4.8, 6, '2010-11-21'),
 (26819, 3.2, 7, '2021-02-23'),
+(28168, 3.2, 5, '2022-06-16'),
 (28168, 4, 8, '2011-06-22'),
 (28168, 2.2, 9, '2014-10-31');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Rating`
+-- Tablo için tablo yapısı `Rating`
 --
 
 CREATE TABLE `Rating` (
@@ -327,7 +341,7 @@ CREATE TABLE `Rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Rating`
+-- Tablo döküm verisi `Rating`
 --
 
 INSERT INTO `Rating` (`NumericRating`) VALUES
@@ -384,75 +398,75 @@ INSERT INTO `Rating` (`NumericRating`) VALUES
 (5);
 
 --
--- Indexes for dumped tables
+-- Dökümü yapılmış tablolar için indeksler
 --
 
 --
--- Indexes for table `Acted_In`
+-- Tablo için indeksler `Acted_In`
 --
 ALTER TABLE `Acted_In`
   ADD PRIMARY KEY (`MovieID`,`ActorID`),
   ADD KEY `ActorID` (`ActorID`);
 
 --
--- Indexes for table `Actor`
+-- Tablo için indeksler `Actor`
 --
 ALTER TABLE `Actor`
   ADD PRIMARY KEY (`ActorID`);
 
 --
--- Indexes for table `Directed`
+-- Tablo için indeksler `Directed`
 --
 ALTER TABLE `Directed`
   ADD PRIMARY KEY (`MovieID`,`DirID`),
   ADD KEY `DirID` (`DirID`);
 
 --
--- Indexes for table `Director`
+-- Tablo için indeksler `Director`
 --
 ALTER TABLE `Director`
   ADD PRIMARY KEY (`DirID`);
 
 --
--- Indexes for table `Genre`
+-- Tablo için indeksler `Genre`
 --
 ALTER TABLE `Genre`
   ADD PRIMARY KEY (`Name`);
 
 --
--- Indexes for table `Genre_Of`
+-- Tablo için indeksler `Genre_Of`
 --
 ALTER TABLE `Genre_Of`
   ADD PRIMARY KEY (`Name`,`MovieID`),
   ADD KEY `MovieID` (`MovieID`);
 
 --
--- Indexes for table `Movie`
+-- Tablo için indeksler `Movie`
 --
 ALTER TABLE `Movie`
   ADD PRIMARY KEY (`MovieID`);
 
 --
--- Indexes for table `Participant`
+-- Tablo için indeksler `Participant`
 --
 ALTER TABLE `Participant`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- Indexes for table `Produced`
+-- Tablo için indeksler `Produced`
 --
 ALTER TABLE `Produced`
   ADD PRIMARY KEY (`MovieID`,`ProID`),
   ADD KEY `ProID` (`ProID`);
 
 --
--- Indexes for table `Producer`
+-- Tablo için indeksler `Producer`
 --
 ALTER TABLE `Producer`
   ADD PRIMARY KEY (`ProID`);
 
 --
--- Indexes for table `Rate`
+-- Tablo için indeksler `Rate`
 --
 ALTER TABLE `Rate`
   ADD PRIMARY KEY (`UserID`,`MovieID`),
@@ -460,79 +474,79 @@ ALTER TABLE `Rate`
   ADD KEY `MovieID` (`MovieID`);
 
 --
--- Indexes for table `Rating`
+-- Tablo için indeksler `Rating`
 --
 ALTER TABLE `Rating`
   ADD PRIMARY KEY (`NumericRating`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
 --
 
 --
--- AUTO_INCREMENT for table `Actor`
+-- Tablo için AUTO_INCREMENT değeri `Actor`
 --
 ALTER TABLE `Actor`
-  MODIFY `ActorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55044;
+  MODIFY `ActorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55046;
 
 --
--- AUTO_INCREMENT for table `Director`
+-- Tablo için AUTO_INCREMENT değeri `Director`
 --
 ALTER TABLE `Director`
-  MODIFY `DirID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85002;
+  MODIFY `DirID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85004;
 
 --
--- AUTO_INCREMENT for table `Movie`
+-- Tablo için AUTO_INCREMENT değeri `Movie`
 --
 ALTER TABLE `Movie`
-  MODIFY `MovieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `MovieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `Participant`
+-- Tablo için AUTO_INCREMENT değeri `Participant`
 --
 ALTER TABLE `Participant`
   MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28169;
 
 --
--- AUTO_INCREMENT for table `Producer`
+-- Tablo için AUTO_INCREMENT değeri `Producer`
 --
 ALTER TABLE `Producer`
-  MODIFY `ProID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17778;
+  MODIFY `ProID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17780;
 
 --
--- Constraints for dumped tables
+-- Dökümü yapılmış tablolar için kısıtlamalar
 --
 
 --
--- Constraints for table `Acted_In`
+-- Tablo kısıtlamaları `Acted_In`
 --
 ALTER TABLE `Acted_In`
   ADD CONSTRAINT `acted_in_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`),
   ADD CONSTRAINT `acted_in_ibfk_2` FOREIGN KEY (`ActorID`) REFERENCES `Actor` (`ActorID`);
 
 --
--- Constraints for table `Directed`
+-- Tablo kısıtlamaları `Directed`
 --
 ALTER TABLE `Directed`
   ADD CONSTRAINT `directed_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`),
   ADD CONSTRAINT `directed_ibfk_2` FOREIGN KEY (`DirID`) REFERENCES `Director` (`DirID`);
 
 --
--- Constraints for table `Genre_Of`
+-- Tablo kısıtlamaları `Genre_Of`
 --
 ALTER TABLE `Genre_Of`
   ADD CONSTRAINT `genre_of_ibfk_1` FOREIGN KEY (`Name`) REFERENCES `Genre` (`Name`),
   ADD CONSTRAINT `genre_of_ibfk_2` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`);
 
 --
--- Constraints for table `Produced`
+-- Tablo kısıtlamaları `Produced`
 --
 ALTER TABLE `Produced`
   ADD CONSTRAINT `produced_ibfk_1` FOREIGN KEY (`MovieID`) REFERENCES `Movie` (`MovieID`),
   ADD CONSTRAINT `produced_ibfk_2` FOREIGN KEY (`ProID`) REFERENCES `Producer` (`ProID`);
 
 --
--- Constraints for table `Rate`
+-- Tablo kısıtlamaları `Rate`
 --
 ALTER TABLE `Rate`
   ADD CONSTRAINT `rate_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `Participant` (`UserID`),

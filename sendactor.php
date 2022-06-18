@@ -12,7 +12,7 @@ $actorID = mysqli_insert_id($db);
 
 mysqli_query($db, "INSERT INTO Acted_In(MovieID,ActorID) VALUES ($movie_id,$actorID)");
 
-header ("Location: index.php");
+header ("Location: admin.php");
 }
 else
 {

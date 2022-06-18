@@ -14,7 +14,7 @@ mysqli_query($db, "DELETE FROM Produced WHERE MovieID = $selection_id");
 mysqli_query($db, "DELETE FROM Movie WHERE MovieID = $selection_id");
 
 
-header ("Location: index.php");
+header ("Location: admin.php");
 
 }
 

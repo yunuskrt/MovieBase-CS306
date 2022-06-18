@@ -26,7 +26,7 @@ mysqli_query($db, "INSERT INTO Genre_Of(Name,MovieID) VALUES ('$genre',$movieID)
 mysqli_query($db, "INSERT INTO Produced(MovieID,ProID) VALUES ($movieID,$proID)");
 
 
-header ("Location: index.php");
+header ("Location: admin.php");
 
 }
 
